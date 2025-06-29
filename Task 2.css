@@ -1,0 +1,93 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #f8f9fa, #e0eafc);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header {
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  color: white;
+  padding: 30px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+}
+
+p.description {
+  color: #e0e0e0;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.container {
+  margin-top: 50px;
+  padding: 30px;
+  background: white;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stopwatch-display {
+  font-size: 64px;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.buttons button {
+  padding: 12px 24px;
+  font-size: 16px;
+  margin: 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #4ca1af;
+  color: white;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buttons button:hover {
+  background: #2c3e50;
+  transform: translateY(-2px);
+}
+
+.buttons button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+ul#laps {
+  margin-top: 30px;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  list-style: decimal;
+  padding-left: 20px;
+  color: #444;
+  font-size: 16px;
+}
+
+ul#laps li {
+  padding: 8px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+footer {
+  margin-top: 60px;
+  font-size: 14px;
+  color: #777;
+  padding-bottom: 20px;
+}

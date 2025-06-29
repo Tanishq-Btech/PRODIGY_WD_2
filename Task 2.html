@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Stopwatch App</title>
+  <link rel="stylesheet" href="Task 2.css">
+</head>
+<body>
+
+  <header>
+    <h1>Smart Stopwatch</h1>
+    <p class="description">Track your time precisely with lap functionality and clean interface.</p>
+  </header>
+
+  <div class="container">
+  <div id="display" class="stopwatch-display">00:00:00.00</div>
+    <div class="buttons">
+      <button id="start">Start</button>
+      <button id="pause" disabled>Pause</button>
+      <button id="reset" disabled>Reset</button>
+      <button id="lap" disabled>Lap</button>
+    </div>
+    <ul id="laps"></ul>
+  </div>
+
+  <footer>
+    &copy; 2025 Stopwatch Web App | Built with HTML, CSS & JavaScript
+  </footer>
+  <script>
+    let startTime = 0;
+  let elapsedTime = 0;
+  let timerInterval;
+
+  const display = document.getElementById('display');
+  const startBtn = document.getElementById('start');
+  const pauseBtn = document.getElementById('pause');
+  const resetBtn = document.getElementById('reset');
+  const lapBtn = document.getElementById('lap');
+  const lapsList = document.getElementById('laps');
+
+  function timeToString(time) {
+    const hrs = Math.floor(time / 3600000);
+    const mins = Math.floor((time % 3600000) / 60000);
+    const secs = Math.floor((time % 60000) / 1000);
+    const ms = Math.floor((time % 1000) / 10); 
+
+    return `${hrs.toString().padStart(2, '0')}:` +
+           `${mins.toString().padStart(2, '0')}:` +
+           `${secs.toString().padStart(2, '0')}.` +
+           `${ms.toString().padStart(2, '0')}`;
+  }
+
+  function start() {
+    startTime = Date.now() - elapsedTime;
+    timerInterval = setInterval(() => {
+      elapsedTime = Date.now() - startTime;
+      display.textContent = timeToString(elapsedTime);
+    }, 10);
+    startBtn.disabled = true;
+    pauseBtn.disabled = false;
+    resetBtn.disabled = false;
+    lapBtn.disabled = false;
+  }
+
+  function pause() {
+    clearInterval(timerInterval);
+    startBtn.disabled = false;
+    pauseBtn.disabled = true;
+  }
+
+  function reset() {
+    clearInterval(timerInterval);
+    elapsedTime = 0;
+    display.textContent = "00:00:00.00";
+    lapsList.innerHTML = "";
+    startBtn.disabled = false;
+    pauseBtn.disabled = true;
+    resetBtn.disabled = true;
+    lapBtn.disabled = true;
+  }
+
+  function lap() {
+    const li = document.createElement('li');
+    li.textContent = `Lap ${lapsList.children.length + 1}: ${timeToString(elapsedTime)}`;
+    lapsList.appendChild(li);
+  }
+
+  startBtn.addEventListener('click', start);
+  pauseBtn.addEventListener('click', pause);
+  resetBtn.addEventListener('click', reset);
+  lapBtn.addEventListener('click', lap);
+  </script>
+
+</body>
+</html>
